@@ -16,7 +16,6 @@ const Navigation = () => {
             <div className={st.navMenu}>
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/Movies'>Movies</NavLink>
-                <NavLink to='/TV-Series'>TV Series</NavLink>
                 <NavLink to='/Actors'>Actors</NavLink>
             </div>
 

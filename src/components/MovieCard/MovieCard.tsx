@@ -9,7 +9,7 @@ import st from "./MovieCard.module.css";
 const MovieCard = () => {
     const {movies} = useAppSelector((state => state.moviesData))
     const dispatch = useAppDispatch()
-    
+
     useEffect(() => {
         dispatch(getMoviesThunk())
     }, [])

@@ -1,7 +1,9 @@
 export type StateType = {
     movies: Array<IMoviesType>;
     movieVideos: Array<IMovieVideosResultsType>;
-    selectedMovie: IMoviesType | null
+    selectedMovie: IMoviesType | null,
+    page: number,
+    totalPages: number
 }
 
 export interface IMoviesType {

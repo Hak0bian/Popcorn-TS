@@ -20,5 +20,10 @@ export const API = {
 
     getMovieById(id: number){
         return instance.get<IMoviesType>(`/movie/${id}`)
-    }
+    },
+
+    changePage(page: number){
+        return instance.get(`/discover/movie?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc`)
+    },
+    ///person/popular?language=en-US&page=${actorPage}
 }
