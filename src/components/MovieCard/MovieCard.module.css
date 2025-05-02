@@ -1,0 +1,27 @@
+.movieCard{
+    padding: 8px;
+    color: #222;
+    border: 1px solid black;
+    box-shadow: 0 0 4px black;
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .3s;
+
+    &:hover{
+        box-shadow: 0 0 8px black;
+    }
+}
+
+.titleDiv{
+    h3{
+        padding: 4px 0;
+    }
+
+    .date,
+    .star{
+        margin-right: 4px;
+    }
+}

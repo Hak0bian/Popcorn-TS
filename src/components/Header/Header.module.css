@@ -1,0 +1,13 @@
+.headContainer{
+    max-width: 1140px;
+    margin: auto;
+    max-width: 1140px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    div img{
+        display: block;
+        height: 100%;
+    }
+}

@@ -1,0 +1,44 @@
+.movieTable{
+    display: flex;
+    padding: 20px;
+    border: 1px solid black;
+    box-shadow: 0 0 8px black;
+    background-color: white;
+    max-width: 1140px;
+    margin: 40px auto;
+}
+
+.posterDiv img{
+    max-width: 320px;
+    height: 100%;
+}
+
+.movieInfo{
+    padding: 0 40px 0 20px;
+
+    h2{
+        font-size: 28px;
+    }
+
+    h3{
+        font-size: 24px;
+        padding-bottom: 4px;
+    }
+
+    .info{
+        padding-bottom: 20px;
+
+        p{
+            padding-top: 4px;
+        }
+
+        .star{
+            margin-left: 4px;
+            font-size: 14px;
+        }
+    }
+
+    iframe{
+        margin-top: 20px;
+    }
+}

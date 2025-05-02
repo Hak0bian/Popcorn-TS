@@ -1,0 +1,48 @@
+.nav{
+    background-color: #2CA1A8;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navContainer{
+    display: flex;
+    max-width: 1140px;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.logoDiv{
+    display: flex;
+    align-items: center;
+
+    .logo{
+        width: 50px;
+    }
+
+    .name{
+        color: black;
+        font-size: 40px;
+        font-family: cursive;
+        padding-left: 8px;
+    }
+}
+
+.navMenu{
+    display: flex;
+    gap: 40px;
+    font-size: 20px;
+    letter-spacing: .4px;
+    
+    a{
+        color: black;
+        transition: .3s;
+        cursor: pointer;
+    
+        &:hover{
+            color: white;
+        }
+    }
+}
