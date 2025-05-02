@@ -13,23 +13,23 @@ const MovieTable = () => {
             selectedMovie 
             ?   <div className={st.movieTable}>
                     <div className={st.posterDiv}>
-                        <img src={`https://image.tmdb.org/t/p/original${selectedMovie.poster_path}`} />
+                        <img src={`https://image.tmdb.org/t/p/original${selectedMovie?.poster_path}`} />
                     </div>
                     
                     <div className={st.movieInfo}>
-                        <h2>{selectedMovie.title}</h2>
+                        <h2>{selectedMovie?.title}</h2>
                         <div className={st.info}>
-                            <p>Language: {selectedMovie.original_language}</p>
-                            <p>Date: {selectedMovie.release_date}</p>
-                            <p>Rating: {selectedMovie.vote_average.toFixed(1)}
+                            <p>Language: {selectedMovie?.original_language}</p>
+                            <p>Date: {selectedMovie?.release_date}</p>
+                            <p>Rating: {selectedMovie?.vote_average?.toFixed(1)}
                                 <BsStarFill className={st.star}/>
                             </p>
-                            <p>Rating Count: {selectedMovie.vote_count}</p>
-                            <p>Adult: {selectedMovie.adult === false ? "No" : "Yes"}</p>
+                            <p>Rating Count: {selectedMovie?.vote_count}</p>
+                            <p>Adult: {selectedMovie?.adult === false ? "No" : "Yes"}</p>
                         </div>
 
                         <h3>Overview</h3>
-                        <p>{selectedMovie.overview}</p>
+                        <p>{selectedMovie?.overview}</p>
                         
                         <iframe
                             width="400"
@@ -43,7 +43,7 @@ const MovieTable = () => {
                         </iframe>
                     </div>
                 </div>
-            : <p>Movie not found</p>     
+            : <p>Movie not found !</p>     
         }
         </>
     )

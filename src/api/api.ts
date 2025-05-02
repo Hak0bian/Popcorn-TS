@@ -10,8 +10,8 @@ const instance = axios.create({
 })
 
 export const API = {
-    getMovies(){
-        return instance.get<IGetMoviesReturnType>(`/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc`)
+    getMovies(page: number){
+        return instance.get<IGetMoviesReturnType>(`/discover/movie?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc`)
     },
 
     getMovieVideos(id: number){
@@ -22,8 +22,11 @@ export const API = {
         return instance.get<IMoviesType>(`/movie/${id}`)
     },
 
-    changePage(page: number){
-        return instance.get(`/discover/movie?include_adult=false&language=en-US&page=${page}&sort_by=popularity.desc`)
+    getActors(page: number){
+        return instance.get(`/person/popular?language=en-US&page=${page}`)
     },
-    ///person/popular?language=en-US&page=${actorPage}
+
+    getActorById(id: number){
+        return instance.get(`/person/${id}`)
+    }
 }

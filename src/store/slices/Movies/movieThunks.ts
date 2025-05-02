@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { IGetMoviesReturnType, IGetMovieVideosReturnType, IMoviesType } from "../types/types"
-import { API } from "../../api/api"
+import { IGetMoviesReturnType, IGetMovieVideosReturnType, IMoviesType } from "../../types/types"
+import { API } from "../../../api/api"
 
-export const getMoviesThunk = createAsyncThunk<IGetMoviesReturnType>(
+export const getMoviesThunk = createAsyncThunk<IGetMoviesReturnType, number>(
     "getMoviesThunk",
-    async () => {
-        const res = await API.getMovies()
+    async (page) => {
+        const res = await API.getMovies(page)
         return res.data
     }
 )
@@ -24,12 +24,4 @@ export const getMovieByIdThunk = createAsyncThunk<IMoviesType, number>(
         const res = await API.getMovieById(id)
         return res.data
     }
-)
-
-export const changePageThunk = createAsyncThunk<IGetMoviesReturnType, number>(
-    "changePageThunk",
-    async (page) => {
-        const res = await API.changePage(page)
-        return res.data
-    } 
 )

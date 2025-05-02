@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { HiMiniArrowSmallLeft, HiMiniArrowSmallRight } from "react-icons/hi2";
-import { useAppDispatch, useAppSelector } from "../../store/hooks/hooks";
-import { changePage } from "../../store/slices/moviesSlices";
-import { changePageThunk } from "../../store/slices/sliceThunks";
+import { useAppDispatch } from "../../store/hooks/hooks";
+import { changePage } from "../../store/slices/Movies/moviesSlice";
+import { getMoviesThunk } from "../../store/slices/Movies/movieThunks";
+import { getActorsThunk } from "../../store/slices/Actor/actorsThunks";
 import st from "./Pagination.module.css"
 
-const Pagination = () => {
+const Pagination = ({totalPages}: {totalPages: number}) => {
     const dispatch = useAppDispatch();
-    const {totalPages} = useAppSelector((state => state.moviesData))
     const [startPage, setStartPage] = useState<number>(1);
     const [activeIndex, setActiveIndex] = useState<number>(0); 
     const currentPage = startPage + activeIndex;
@@ -42,7 +42,8 @@ const Pagination = () => {
     };
 
     useEffect(() => {
-        dispatch(changePageThunk(currentPage));
+        dispatch(getMoviesThunk(currentPage));
+        dispatch(getActorsThunk(currentPage))
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [currentPage]);
 

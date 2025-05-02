@@ -1,4 +1,4 @@
-export type StateType = {
+export type IMoviesStateType = {
     movies: Array<IMoviesType>;
     movieVideos: Array<IMovieVideosResultsType>;
     selectedMovie: IMoviesType | null,
@@ -16,7 +16,7 @@ export interface IMoviesType {
     overview: string,
     popularity: number,
     poster_path: string,
-    release_date:  string,
+    release_date: string,
     title: string,
     video: boolean,
     vote_average: number,
@@ -47,3 +47,27 @@ export interface IGetMovieVideosReturnType {
     id: number,
     results: Array<IMovieVideosResultsType>
 }
+
+
+// /////////////////////////////////////////////
+
+
+export type IActorsStateType = {
+  actors: Array<IActorType>;
+  selectedActor: IActorType | null;
+  page: number;
+  totalPages: number
+}
+
+export interface IActorType {
+    id: number;
+    name: string;
+    original_name: string,
+    profile_path: string | null;
+    adult: boolean,
+    gender: number,
+    known_for_department: string
+    popularity: number,
+    known_for: Array<IMoviesType>
+}
+

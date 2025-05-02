@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IGetMoviesReturnType, IGetMovieVideosReturnType, IMoviesType, StateType } from "../types/types";
-import { getMoviesThunk, getMovieVideosThunk, getMovieByIdThunk, changePageThunk } from "./sliceThunks";
+import { IGetMoviesReturnType, IGetMovieVideosReturnType, IMoviesType, IMoviesStateType } from "../../types/types";
+import { getMoviesThunk, getMovieVideosThunk, getMovieByIdThunk } from "./movieThunks";
 
 
-const initialState : StateType = {
+const initialState : IMoviesStateType = {
     movies: [],
     movieVideos: [],
     selectedMovie: null,
@@ -31,10 +31,6 @@ const moviesSlice = createSlice({
 
         builder.addCase(getMovieByIdThunk.fulfilled, (state, action: PayloadAction<IMoviesType>) => {
             state.selectedMovie = action.payload
-        })
-
-        builder.addCase(changePageThunk.fulfilled, (state, action: PayloadAction<IGetMoviesReturnType>) => {
-            state.movies = action.payload.results
         })
     }
 })

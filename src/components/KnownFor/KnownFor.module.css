@@ -1,0 +1,25 @@
+.box{
+    display: flex;
+    margin-bottom: 8px;
+
+    .imageDiv{
+        min-width: 200px;
+    }
+
+    img{
+        max-width: 200px;
+    }
+
+    p{
+        padding: 2px 0;
+    }
+
+    .titleDiv{
+        padding: 0 12px;
+    }
+
+    .date,
+    .star{
+        margin-right: 4px;
+    }
+}

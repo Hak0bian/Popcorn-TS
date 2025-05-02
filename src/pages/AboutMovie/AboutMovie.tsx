@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import { MovieTable } from "../../components";
 import { useAppDispatch } from '../../store/hooks/hooks';
-import { getMovieByIdThunk, getMovieVideosThunk } from '../../store/slices/sliceThunks';
-
+import { getMovieByIdThunk, getMovieVideosThunk } from '../../store/slices/Movies/movieThunks';
 
 const AboutMovie = () => {
     const {id} = useParams();

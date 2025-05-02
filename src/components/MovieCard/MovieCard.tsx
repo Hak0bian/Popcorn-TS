@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { getMoviesThunk } from '../../store/slices/sliceThunks';
+import { getMoviesThunk } from '../../store/slices/Movies/movieThunks';
 import { NavLink } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
 import st from "./MovieCard.module.css";
 
 const MovieCard = () => {
-    const {movies} = useAppSelector((state => state.moviesData))
+    const {movies, page} = useAppSelector((state => state.moviesData))
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(getMoviesThunk())
+        dispatch(getMoviesThunk(page))
     }, [])
 
     return (
