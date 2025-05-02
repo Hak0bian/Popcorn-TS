@@ -1,10 +1,10 @@
-import { useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks'
-import { getMoviesThunk } from '../../store/slices/moviesSlices'
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
+import { getMoviesThunk } from '../../store/slices/sliceThunks';
 import { NavLink } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
-import st from "./MovieCard.module.css"
+import st from "./MovieCard.module.css";
 
 const MovieCard = () => {
     const {movies} = useAppSelector((state => state.moviesData))
@@ -17,7 +17,7 @@ const MovieCard = () => {
     return (
         <>
         {
-            movies.map((movie: any) => (
+            movies.map((movie) => (
                 <NavLink to={`movie/${movie.id}`} key={movie.id}>
                     <div className={st.movieCard}>
                         <div className={st.imgDiv}>

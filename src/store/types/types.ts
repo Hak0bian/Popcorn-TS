@@ -1,6 +1,7 @@
 export type StateType = {
-    movies: IMoviesType[];
-    movieVideos: IMovieVideosResultsType[];
+    movies: Array<IMoviesType>;
+    movieVideos: Array<IMovieVideosResultsType>;
+    selectedMovie: IMoviesType | null
 }
 
 export interface IMoviesType {
@@ -20,7 +21,7 @@ export interface IMoviesType {
     vote_count: number
 }
 
-export interface  IMovieVideosResultsType {
+export interface IMovieVideosResultsType {
     iso_639_1: string 
     iso_3166_1: string 
     name: string 
@@ -31,4 +32,16 @@ export interface  IMovieVideosResultsType {
     official: number
     published_at: string
     id: string
+}
+
+export interface IGetMoviesReturnType {
+    page: number,
+    results: Array<IMoviesType>
+    total_pages: number
+    total_results: number
+}
+
+export interface IGetMovieVideosReturnType {
+    id: number,
+    results: Array<IMovieVideosResultsType>
 }

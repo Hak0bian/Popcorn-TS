@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IGetMoviesReturnType, IGetMovieVideosReturnType, IMoviesType } from "../store/types/types";
 
 const instance = axios.create({
     baseURL: 'https://api.themoviedb.org/3',
@@ -10,10 +11,14 @@ const instance = axios.create({
 
 export const API = {
     getMovies(){
-        return instance.get(`/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc`)
+        return instance.get<IGetMoviesReturnType>(`/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc`)
     },
 
     getMovieVideos(id: number){
-        return instance.get(`/movie/${id}/videos?language=en-US`)
+        return instance.get<IGetMovieVideosReturnType>(`/movie/${id}/videos?language=en-US`)
+    },
+
+    getMovieById(id: number){
+        return instance.get<IMoviesType>(`/movie/${id}`)
     }
 }

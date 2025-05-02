@@ -1,26 +1,12 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API } from "../../api/api";
-import { StateType } from "../types/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IGetMovieVideosReturnType, IMoviesType, StateType } from "../types/types";
+import { getMoviesThunk, getMovieVideosThunk, getMovieByIdThunk } from "./sliceThunks";
 
-export const getMoviesThunk = createAsyncThunk(
-    "getMoviesThunk",
-    async () => {
-        const res = await API.getMovies()
-        return res.data.results
-    }
-)
-
-export const getMovieVideosThunk = createAsyncThunk(
-    "getMovieVideosThunk",
-    async (id: number) => {
-        const res = await API.getMovieVideos(id)
-        return res.data
-    }
-)
 
 const initialState : StateType = {
     movies: [],
-    movieVideos: []
+    movieVideos: [],
+    selectedMovie: null
 }
 
 const moviesSlice = createSlice({
@@ -28,12 +14,16 @@ const moviesSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getMoviesThunk.fulfilled, (state, action) => {
+        builder.addCase(getMoviesThunk.fulfilled, (state, action: PayloadAction<Array<IMoviesType>>) => {
             state.movies = action.payload
         })
 
-        builder.addCase(getMovieVideosThunk.fulfilled, (state, action) => {
+        builder.addCase(getMovieVideosThunk.fulfilled, (state, action: PayloadAction<IGetMovieVideosReturnType>) => {
             state.movieVideos = action.payload.results
+        })
+
+        builder.addCase(getMovieByIdThunk.fulfilled, (state, action: PayloadAction<IMoviesType>) => {
+            state.selectedMovie = action.payload
         })
     }
 })
