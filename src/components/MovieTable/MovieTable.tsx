@@ -8,7 +8,7 @@ const MovieTable = () => {
     let key = trailer ? trailer.key : null;
 
     return (
-        <>
+        <section className={st.movieSection}>
         { 
             selectedMovie 
             ?   <div className={st.movieTable}>
@@ -43,9 +43,9 @@ const MovieTable = () => {
                         </iframe>
                     </div>
                 </div>
-            : <p>Movie not found !</p>     
+            : <h3 className={st.notFound}>Movie not found !</h3>     
         }
-        </>
+        </section>
     )
 }
 

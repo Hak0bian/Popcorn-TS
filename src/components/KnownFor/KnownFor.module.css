@@ -1,6 +1,10 @@
 .box{
     display: flex;
+    align-items: center;
     margin-bottom: 8px;
+    padding: 8px;
+    border: 1px solid lightgray;
+    background-color: #ececec;
 
     .imageDiv{
         min-width: 200px;

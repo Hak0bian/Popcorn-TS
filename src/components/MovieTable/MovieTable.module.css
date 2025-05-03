@@ -1,3 +1,7 @@
+.movieSection{
+    min-height: 90vh;
+}
+
 .movieTable{
     display: flex;
     padding: 20px;
@@ -41,4 +45,9 @@
     iframe{
         margin-top: 20px;
     }
+}
+
+.notFound{
+    text-align: center;
+    padding-top: 20px;
 }

@@ -1,3 +1,7 @@
+.actorSection{
+    min-height: 90vh;
+}
+
 .actorTable{
     display: flex;
     padding: 20px;
@@ -24,7 +28,21 @@
         padding: 8px 0;
     }
 
+    .knownAS{
+        font-weight: 600;
+    }
+
     .biography{
         font-size: 14px;
     }
+
+    .knownForBox{
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
+
+.notFound{
+    text-align: center;
+    padding-top: 20px;
 }

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getActorByIdThunk, getActorsThunk } from "./actorsThunks";
+import { getActorsThunk, getFullActorInfoThunk } from "./actorsThunks";
 import { IActorsStateType } from "../../types/types";
 
  
@@ -20,9 +20,9 @@ export const actorsSlice = createSlice({
             state.totalPages = action.payload.total_pages
         })
 
-        builder.addCase(getActorByIdThunk.fulfilled, (state, action) => {
-            state.selectedActor = action.payload
-        })
+        builder.addCase(getFullActorInfoThunk.fulfilled, (state, action) => {
+            state.selectedActor = action.payload;
+        });
     }
 })
 

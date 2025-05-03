@@ -9,10 +9,17 @@ export const getActorsThunk = createAsyncThunk(
     }
 )
 
-export const getActorByIdThunk = createAsyncThunk(
-    "getActorByIdThunk",
+export const getFullActorInfoThunk = createAsyncThunk(
+    "getFullActorInfoThunk",
     async (id: number) => {
-        const res = await API.getActorById(id)
-        return res.data
+      const [actorRes, knownForRes] = await Promise.all([
+        API.getActorById(id),
+        API.getActorKnownFor(id)
+      ]);
+  
+      return {
+        ...actorRes.data,
+        known_for: knownForRes.data.crew,
+      };
     }
-)
+);

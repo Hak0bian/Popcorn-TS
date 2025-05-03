@@ -5,9 +5,9 @@ import st from "./ActorTable.module.css"
 
 const ActorTable = () => {   
     const {selectedActor} = useAppSelector((state) => state.actorsData)
-
+    
     return (
-        <>
+        <section className={st.actorSection}>
         {
             selectedActor
             ?   <div className={st.actorTable} key={selectedActor?.id}>
@@ -17,21 +17,28 @@ const ActorTable = () => {
         
                     <div className={st.actorInfo}>
                         <h2>{selectedActor?.name}</h2>
-                        <p className={st.biography}>{selectedActor?.known_for?.[0]?.overview}</p>
+                        <p className={st.knownAS}>(
+                            { selectedActor?.also_known_as?.map((names, ind) => ( <span key={ind}> {names}, </span>))} 
+                        )</p>
+                        <p className={st.biography}>{selectedActor?.biography}</p>
         
                         <h3>Known For</h3>
-                        {
-                            selectedActor?.known_for?.map((movie) => {
-                                return (
-                                    <KnownFor movie={movie}/>
-                                )
-                            })
-                        }
+                        <div className={st.knownForBox}>
+                            {
+                                selectedActor.known_for.length > 0
+                                ?   selectedActor.known_for.map(movie => {
+                                        return (
+                                            <KnownFor key={movie.id} movie={movie}/>
+                                        )
+                                    })
+                                :   <p>Not known for any movies</p>
+                            }
+                        </div>
                     </div>
                 </div>
-            : <p>Actor not found !</p>
+            : <h3 className={st.notFound}>Actor not found !</h3>
         }
-        </>
+        </section>
     )
 }
 

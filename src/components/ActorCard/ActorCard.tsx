@@ -6,8 +6,8 @@ import profile from "../../assets/profile.jpg";
 import st from "./ActorCard.module.css";
 
 const ActorCard = () => {
-     const {actors, page} = useAppSelector((state => state.actorsData))
-    const dispatch = useAppDispatch()
+    const {actors, page} = useAppSelector((state => state.actorsData))
+    const dispatch = useAppDispatch()    
 
     useEffect(() => {
         dispatch(getActorsThunk(page))

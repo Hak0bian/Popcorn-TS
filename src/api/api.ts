@@ -28,5 +28,9 @@ export const API = {
 
     getActorById(id: number){
         return instance.get(`/person/${id}`)
+    },
+
+    getActorKnownFor(id: number){
+        return instance.get(`/person/${id}/movie_credits`)
     }
 }

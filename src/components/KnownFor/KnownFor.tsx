@@ -4,8 +4,6 @@ import { BsStarFill } from 'react-icons/bs'
 import st from "./KnownFor.module.css"
 
 const KnownFor = ({movie} : {movie: IMoviesType}) => {
-
-    console.log(movie);
     
     return (
         <div className={st.box}>
