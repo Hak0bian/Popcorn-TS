@@ -13,7 +13,9 @@ const AboutActor = () => {
     }, [])
 
     return (
-        <ActorTable />
+        <section style={{ minHeight: "90vh" }}>
+            <ActorTable />
+        </section>
     )
 }
 

@@ -14,7 +14,9 @@ const AboutMovie = () => {
     }, [])
 
     return (
-        <MovieTable />
+        <section style={{ minHeight: "90vh" }}>
+            <MovieTable />
+        </section>
     )
 }
 

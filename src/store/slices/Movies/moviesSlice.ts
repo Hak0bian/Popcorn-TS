@@ -8,7 +8,8 @@ const initialState : IMoviesStateType = {
     movieVideos: [],
     selectedMovie: null,
     page: 1,
-    totalPages: 0
+    totalPages: 0,
+    isLoading: false
 }
 
 const moviesSlice = createSlice({
@@ -20,17 +21,29 @@ const moviesSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
+        builder.addCase(getMoviesThunk.pending, (state) => {
+            state.isLoading = true
+        })
         builder.addCase(getMoviesThunk.fulfilled, (state, action: PayloadAction<IGetMoviesReturnType>) => {
             state.movies = action.payload.results
             state.totalPages = action.payload.total_pages
+            state.isLoading = false
         })
 
+        builder.addCase(getMovieVideosThunk.pending, (state) => {
+            state.isLoading = true
+        })
         builder.addCase(getMovieVideosThunk.fulfilled, (state, action: PayloadAction<IGetMovieVideosReturnType>) => {
             state.movieVideos = action.payload.results
+            state.isLoading = false
         })
 
+        builder.addCase(getMovieByIdThunk.pending, (state) => {
+            state.isLoading = true
+        })
         builder.addCase(getMovieByIdThunk.fulfilled, (state, action: PayloadAction<IMoviesType>) => {
             state.selectedMovie = action.payload
+            state.isLoading = false
         })
     }
 })

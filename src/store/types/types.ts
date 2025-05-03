@@ -3,7 +3,8 @@ export type IMoviesStateType = {
     movieVideos: Array<IMovieVideosResultsType>;
     selectedMovie: IMoviesType | null,
     page: number,
-    totalPages: number
+    totalPages: number,
+    isLoading: boolean
 }
 
 export interface IMoviesType {
@@ -23,7 +24,8 @@ export interface IMoviesType {
     vote_count: number,
     media_type?: string
     character?: string,
-    order?: number
+    order?: number,
+    job?: string
 }
 
 export interface IMovieVideosResultsType {
@@ -59,14 +61,9 @@ export type IActorsStateType = {
     actors: Array<IActorType>;
     selectedActor: ISelectedActorType | null;
     page: number;
-    totalPages: number
+    totalPages: number,
+    isLoading: boolean
 }
-
-// export interface IKnownFor {
-//     id: number,
-//     cast: Array<IMoviesType>,
-//     crew: Array<IMoviesType>
-// }
 
 export interface IActorType {
     id: number;
@@ -88,7 +85,6 @@ export interface ISelectedActorType {
     place_of_birth: string,
     birthday: string,
     deathday: string | null
-    original_name: string,
     profile_path: string | null;
     adult: boolean,
     gender: number,
@@ -97,4 +93,11 @@ export interface ISelectedActorType {
     also_known_as: [],
     homepage: number | null,
     known_for: Array<IMoviesType>;
+}
+
+export interface IGetActorsReturnType {
+    page: number,
+    results: Array<IActorType>
+    total_pages: number
+    total_results: number
 }
