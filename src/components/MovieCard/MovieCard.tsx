@@ -1,24 +1,17 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks/hooks';
-import { getMoviesThunk } from '../../store/slices/Movies/movieThunks';
+import { useAppSelector } from '../../store/hooks/hooks';
 import { NavLink } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
 import { IoCalendar } from "react-icons/io5";
 import st from "./MovieCard.module.css";
 
 const MovieCard = () => {
-    const {movies, page} = useAppSelector((state => state.moviesData))
-    const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        dispatch(getMoviesThunk(page))
-    }, [])
+    const {movies} = useAppSelector((state => state.moviesData))
 
     return (
         <>
         {
             movies.map((movie) => (
-                <NavLink to={`movie/${movie.id}`} key={movie.id}>
+                <NavLink to={`/Movies/movie/${movie.id}`} key={movie.id}>
                     <div className={st.movieCard}>
                         <div className={st.imgDiv}>
                             <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} />
