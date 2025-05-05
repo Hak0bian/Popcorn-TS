@@ -7,7 +7,6 @@ const initialState : IMoviesStateType = {
     movies: [],
     movieVideos: [],
     selectedMovie: null,
-    page: 1,
     totalPages: 0,
     isLoading: false
 }
@@ -15,19 +14,18 @@ const initialState : IMoviesStateType = {
 const moviesSlice = createSlice({
     name: "MoviesSlice",
     initialState,
-    reducers: {
-        changePage(state, action : PayloadAction<number>){
-            state.page = action.payload
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getMoviesThunk.pending, (state) => {
             state.isLoading = true
         })
         builder.addCase(getMoviesThunk.fulfilled, (state, action: PayloadAction<IGetMoviesReturnType>) => {
-            state.movies = action.payload.results
-            state.totalPages = action.payload.total_pages
-            state.isLoading = false
+            const newMovies = action.payload.results.filter(
+                newMovie => !state.movies.some(existingMovie => existingMovie.id === newMovie.id)
+            );
+            state.movies = [...state.movies, ...newMovies];
+            state.totalPages = action.payload.total_pages;
+            state.isLoading = false;
         })
 
         builder.addCase(getMovieVideosThunk.pending, (state) => {
@@ -48,5 +46,4 @@ const moviesSlice = createSlice({
     }
 })
 
-export const { changePage } = moviesSlice.actions
 export default moviesSlice.reducer

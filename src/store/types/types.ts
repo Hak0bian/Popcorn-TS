@@ -2,7 +2,6 @@ export type IMoviesStateType = {
     movies: Array<IMoviesType>;
     movieVideos: Array<IMovieVideosResultsType>;
     selectedMovie: IMoviesType | null,
-    page: number,
     totalPages: number,
     isLoading: boolean
 }
@@ -60,7 +59,6 @@ export interface IGetMovieVideosReturnType {
 export type IActorsStateType = {
     actors: Array<IActorType>;
     selectedActor: ISelectedActorType | null;
-    page: number;
     totalPages: number,
     isLoading: boolean
 }

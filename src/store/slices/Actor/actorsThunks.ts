@@ -4,7 +4,7 @@ import { API } from "../../../api/api"
 
 export const getActorsThunk = createAsyncThunk<IGetActorsReturnType, number>(
     "getActorsThunk",
-    async (page) => {
+    async (page = 1) => {
         const res = await API.getActors(page)
         return res.data
       }

@@ -4,11 +4,8 @@ import profile from "../../assets/profile.jpg";
 import st from "./ActorTable.module.css"
 
 const ActorTable = () => {   
-    const {selectedActor, isLoading} = useAppSelector((state) => state.actorsData)
+    const {selectedActor} = useAppSelector((state) => state.actorsData)
 
-    if (isLoading) {
-        return <h3 className={st.loading}>Loading...</h3>;
-    }
     if (!selectedActor) {
         return <h3 className={st.notFound}>Actor not found!</h3>;
     }

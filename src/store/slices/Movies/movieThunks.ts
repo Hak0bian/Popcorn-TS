@@ -4,7 +4,7 @@ import { API } from "../../../api/api"
 
 export const getMoviesThunk = createAsyncThunk<IGetMoviesReturnType, number>(
     "getMoviesThunk",
-    async (page) => {
+    async (page = 1) => {
         const res = await API.getMovies(page)
         return res.data
     }

@@ -3,13 +3,10 @@ import { BsStarFill } from "react-icons/bs";
 import st from "./MovieTable.module.css"
 
 const MovieTable = () => {
-    const {movieVideos, selectedMovie, isLoading} = useAppSelector((state => state.moviesData))
+    const {movieVideos, selectedMovie} = useAppSelector((state => state.moviesData))
     const trailer = movieVideos.find(obj => obj.type === "Trailer")
     let key = trailer ? trailer.key : null;
 
-    if (isLoading) {
-        return <h3 className={st.loading}>Loading...</h3>;
-    }
     if (!selectedMovie) {
         return <h3 className={st.notFound}>Movie not found!</h3>;
     }
